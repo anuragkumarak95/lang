@@ -1,7 +1,5 @@
 package org.practice.lang;
 
-import org.practice.lang.Type;
-import org.practice.lang.Value;
 import org.practice.lang.block.Block;
 
 /**

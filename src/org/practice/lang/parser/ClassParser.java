@@ -1,5 +1,6 @@
 package org.practice.lang.parser;
 
+import org.practice.lang.Type;
 import org.practice.lang.block.*;
 import org.practice.lang.block.Class;
 import org.practice.lang.tokenizer.Tokenizer;
@@ -9,7 +10,7 @@ import org.practice.lang.tokenizer.Tokenizer;
  *
  * The Parser for class block.
  */
-public class ClassParser extends Parser<Class> {
+public class ClassParser extends Parser<Class> implements Type{
     @Override
     public boolean shouldParse(String line) {
         return line.matches("class [a-zA-Z][a-zA-Z0-9]*");
@@ -17,6 +18,8 @@ public class ClassParser extends Parser<Class> {
 
     @Override
     public Class parse(Block superBlock, Tokenizer tokenizer) {
+
+
         tokenizer.nextToken(); // skipping the token class as it is an indicator, and is not needed anymore.
         String name = tokenizer.nextToken().getToken();
 

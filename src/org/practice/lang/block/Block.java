@@ -17,13 +17,17 @@ public abstract class Block {
     private ArrayList<Variable> variables;
 
     public Block(Block superBlock) {
-        this.subBlocks = subBlocks;
+        this.superBlock = superBlock;
         this.subBlocks = new ArrayList<>();
         this.variables = new ArrayList<>();
     }
 
     public Block getSuperBlock() {
         return superBlock;
+    }
+
+    public Block[] getSubBlocks(){
+        return subBlocks.toArray(new Block[subBlocks.size()]);
     }
 
     public void addBlock(Block block){

@@ -1,8 +1,8 @@
 package org.practice.lang.parser;
 
+import org.practice.lang.BuiltInType;
 import org.practice.lang.Parameter;
 import org.practice.lang.Type;
-import org.practice.lang.Value;
 import org.practice.lang.block.Block;
 import org.practice.lang.block.Method;
 import org.practice.lang.tokenizer.Token;
@@ -22,7 +22,7 @@ public class MethodParser extends Parser<Method> {
     @Override
     public boolean shouldParse(String line) {
         return line.matches(
-                "method [a-zA-z][a-zA-Z0-9]* \\(([a-zA-z][a-zA-Z0-9]* [a-zA-z][a-zA-Z0-9]*)*\\) returns [a-zA-z][a-zA-Z0-9]*"
+                "method [a-zA-z][a-zA-Z0-9]* requires \\(([a-zA-z][a-zA-Z0-9]* [a-zA-z][a-zA-Z0-9]*)*\\) returns [a-zA-z][a-zA-Z0-9]*"
         );
     }
 
@@ -53,7 +53,7 @@ public class MethodParser extends Parser<Method> {
 
                 else {
                     paramData[1] = token.getToken();
-                    params.add(new Parameter(Type.valueOf(paramData[0].toUpperCase()),paramData[1])); // in case of value added, add the gathered couple to the array list of parameters.
+                    params.add(new Parameter(BuiltInType.valueOf(paramData[0].toUpperCase()),paramData[1])); // in case of value added, add the gathered couple to the array list of parameters.
                     paramData = new String[2];//reset the couple data back to null, for further gathering of parameters.
                 }
             }
@@ -61,8 +61,8 @@ public class MethodParser extends Parser<Method> {
 
         tokenizer.nextToken();//skiped the returns keyword.
 
-        Type returnType = Type.valueOf(tokenizer.nextToken().getToken().toUpperCase()); // gathered the returnType from the token.
+        String returnType = tokenizer.nextToken().getToken(); // gathered the returnBuiltInType from the token.
 
-        return new Method(superBlock,name,returnType,params.toArray(new Parameter[params.size()]));
+        return new Method(superBlock,name, returnType,params.toArray(new Parameter[params.size()]));
     }
 }
