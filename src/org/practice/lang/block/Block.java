@@ -1,4 +1,4 @@
-package org.practice.lang;
+package org.practice.lang.block;
 
 import java.util.ArrayList;
 
@@ -20,6 +20,10 @@ public abstract class Block {
 
     public Block getSuperBlock() {
         return superBlock;
+    }
+
+    public void addBlock(Block block){
+        subBlocks.add(block);
     }
 
     //an abstract method for compulsory inclusion in all the inherited blocks.
