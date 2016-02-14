@@ -10,19 +10,19 @@ A primitive type: string, int, boolean, etc.
 Either an identifier (for a variable) or a literal (1, "Hello", true)
 
 Class Declaration:
-`class <identifier>`
+'class <identifier>'
 
 Method Declaration:
-`method <identifier = name> requires ([<type> <identifier = name>...]) [returns <type>]`
+'method <identifier = name> requires ([<type> <identifier = name>...]) returns <type>'
 
 Variable Declaration:
-`var <type> <identifier = name> [= <value>]`
+'var <type> <identifier = name> [= <value>]'
 
 Method Invocation:
-`<identifier = name>([<value>...])`
+'<identifier = name>([<value>...])'
 
 Print Statement:
-`print <value>`
+'print <value>'
 
 Return Statement:
-`return <value>`
+'return <value>'
