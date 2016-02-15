@@ -3,7 +3,7 @@ package org.practice.lang;
 /**
  * Created by Anurag on 14-02-2016.
  *
- * Represents a Parameter.
+ * Represents a Parameter used in method block.
  */
 public class Parameter {
     private Type type;

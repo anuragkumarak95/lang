@@ -1,14 +1,12 @@
 package org.practice.lang;
 
 
-import com.sun.javaws.exceptions.InvalidArgumentException;
 import org.practice.lang.block.*;
 import org.practice.lang.block.Class;
 import org.practice.lang.parser.*;
 import org.practice.lang.tokenizer.Tokenizer;
 
 import java.util.ArrayList;
-import java.util.concurrent.CountDownLatch;
 
 /**
  * Created by Anurag on 14-02-2016.
@@ -46,8 +44,16 @@ public class Runtime {
             success = false;
             Tokenizer tokenizer = new Tokenizer(line);
             for(Parser<?> parser : parsers){
+
                 if(parser.shouldParse(line)){
+
+                    //if the parsing is for method block, then the super block has to be the initial class block of the current block.
+                    if(parser instanceof MethodParser){block = block.getBlockTree().get(0);}
+
+                    //actual parsing of blocks.
                     Block newBlock = parser.parse(block,tokenizer);
+
+                    //creating block hierarchy of blocks according to aquired sequence of lines.
                     if(newBlock instanceof Class){
                         classes.add((Class) newBlock);
                         block = newBlock;
@@ -80,9 +86,6 @@ public class Runtime {
                 if(b instanceof Method){
                     Method method = (Method) b;
                     if(method.getName().equals("main")&&method.getType().equals("void")&&method.getParams().length==0){main = c;}
-                    for(Block var : method.getSubBlocks()){
-                        if(var instanceof VariableBlock) System.out.println("Var found.");
-                    }
                 }
 
             }

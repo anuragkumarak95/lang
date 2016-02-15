@@ -15,12 +15,15 @@ public class PrintBlock extends Block {
         super(superBlock);
         this.quote = quote;
 
-        run();
+        init();
     }
 
+
     @Override
-    public void run() {
+    public void init() {
         if(getSuperBlock().getClass() != Method.class ) throw new IllegalStateException(TAG+"Print can only called inside a method.");
         System.out.println(TAG+getSuperBlock().toString() + " says : " + quote);
     }
+
+
 }

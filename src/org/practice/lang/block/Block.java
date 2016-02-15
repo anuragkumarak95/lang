@@ -37,6 +37,10 @@ public abstract class Block {
     }
 
     public void addVariable(Variable variable){
+
+        //check for uniqueness of the variable identifier.
+        for(Variable v : variables){if(v.getName().equals(variable.getName())) throw new IllegalStateException("Variable of same name already present.");}
+
         variables.add(variable);
     }
 
@@ -74,7 +78,13 @@ public abstract class Block {
             return (blocks);
     }
 
-    //an abstract method for compulsory inclusion in all the inherited blocks.
-    public abstract void run();
+    //variables list getter.
+    public ArrayList<Variable> getVariables(){
+        return variables;
+    }
+
+
+    //an abstract initialisation method.
+    public abstract void init();
 
 }

@@ -22,20 +22,26 @@ public class VariableBlock extends Block {
         this.type = type;
         this.value = value;
 
-        run();
+        init();
     }
 
     @Override
-    public void run() {
+    public void init() {
         Type t = Type.match(type);
 
-        if(t == BuiltInType.VOID) throw new IllegalStateException("variable cannot have builtInType : void");
+        if(t == BuiltInType.VOID) throw new IllegalStateException(TAG+"variable cannot have builtInType : void");
 
-        if(getSuperBlock().getClass() == Class.class) System.out.println("Globar variable : " + name);
+        if(getSuperBlock().getClass() == Class.class) System.out.println(TAG+"Globar variable : " + name);
 
-        System.out.println(TAG+"var name : "+name+", var type : "+t+", value : "+value);
+        System.out.println(TAG + "var name : " + name + ", var type : " + t + ", value : " + value);
+
+        for(Variable v : getSuperBlock().getVariables()){
+            if(v.getName().equals(name)) throw new IllegalStateException(TAG+"variable with same name exit in the scope. ("+name+")");
+        }
 
         //add the variable to superBlock as the Variable block is of no use other than Composite class declaration.
-        getSuperBlock().addVariable(new Variable(getSuperBlock(), t,name,value));
+        getSuperBlock().addVariable(new Variable(getSuperBlock(), t, name, value));
     }
+
+
 }

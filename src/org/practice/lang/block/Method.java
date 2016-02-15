@@ -24,14 +24,20 @@ public class Method extends Block {
         this.name = name;
         this.type = type;
         this.params = params;
-
-        run();
+        init();
     }
 
     @Override
-    public void run() {
-        invoke();
+    public void init() {
+
         System.out.println(TAG+"Name : "+name+" | type "+type+" | parent :"+((Class)getSuperBlock()).getName());
+    }
+
+
+    public void run() {
+        System.out.println(TAG+name+" method called..");
+        //to start the method functionality, invoke the method.
+        invoke();
 
     }
 
@@ -55,7 +61,10 @@ public class Method extends Block {
         }
 
         for(Block b : getSubBlocks()){
-            b.run();
+
+            /*
+            Add a return block in here and init() the return block to gather the returnValue from it.
+            b.init();*/
 
             if(returnValue != null){
                 break;

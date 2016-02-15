@@ -12,7 +12,9 @@ import org.practice.lang.tokenizer.Tokenizer;
 public class PrintParser extends Parser<PrintBlock> {
     @Override
     public boolean shouldParse(String line) {
-        return line.matches("print (\")?[a-zA-Z0-9]*(\")?");
+        //in pattern,we use //s+ to specify that this string pattern can have 1-more spaces between that section.
+        //here print and the value to print can have 1 - any number of spaces.
+        return line.matches("print\\s+(\")?[a-zA-Z0-9]*(\")?");
     }
 
     @Override

@@ -13,7 +13,7 @@ import org.practice.lang.tokenizer.Tokenizer;
 public class ClassParser extends Parser<Class> implements Type{
     @Override
     public boolean shouldParse(String line) {
-        return line.matches("class [a-zA-Z][a-zA-Z0-9]*");
+        return line.matches("class\\s+[a-zA-Z][a-zA-Z0-9]*");
     }
 
     @Override
