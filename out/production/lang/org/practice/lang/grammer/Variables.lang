@@ -1,0 +1,11 @@
+class Variables
+
+    method main requires () return void
+        string str = getString()
+        printString(str)
+
+    method printString requires (string str) return void
+        print str
+
+    method getString requires () returns string
+        return "Hello"

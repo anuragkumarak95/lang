@@ -1,0 +1,28 @@
+// Grammar
+
+<identifier>:
+First character is a letter, any proceeding characters are letters or numbers.
+
+<builtInType>:
+A primitive builtInType: string, int, boolean, etc.
+
+<value>:
+Either an identifier (for a variable) or a literal (1, "Hello", true)
+
+Class Declaration:
+'class <identifier>'
+
+Method Declaration:
+'method <identifier = name> requires ([<builtInType> <identifier = name>...]) returns <builtInType>'
+
+Variable Declaration:
+'var <builtInType> <identifier = name> [= <value>]'
+
+Method Invocation:
+'<identifier = name>([<value>...])'
+
+Print Statement:
+'print <value>'
+
+Return Statement:
+'return <value>'
