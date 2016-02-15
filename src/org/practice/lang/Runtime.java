@@ -2,14 +2,9 @@ package org.practice.lang;
 
 
 import com.sun.javaws.exceptions.InvalidArgumentException;
-import org.practice.lang.block.Block;
+import org.practice.lang.block.*;
 import org.practice.lang.block.Class;
-import org.practice.lang.block.Method;
-import org.practice.lang.block.VariableBlock;
-import org.practice.lang.parser.ClassParser;
-import org.practice.lang.parser.MethodParser;
-import org.practice.lang.parser.Parser;
-import org.practice.lang.parser.VariableParser;
+import org.practice.lang.parser.*;
 import org.practice.lang.tokenizer.Tokenizer;
 
 import java.util.ArrayList;
@@ -29,14 +24,18 @@ public class Runtime {
     private ArrayList<Class> classes;
     public Runtime(){
         this.classes = new ArrayList<>();
-        String code = "class HelloWorld\n" +
-                "    method main requires () returns void\n" +
-                "var string str = \"hello!\" ";
+        String code =
+                "   class HelloWorld\n" +
+                "       var String str = \"hello!\"\n"+
+                "       method main requires () returns void\n" +
+                        "   var String q = str\n"+
+                "           print \"hello\"\n"+
+                "        method temp requires () returns void\n";
 
 
         boolean success = false;
 
-        Parser<?>[] parsers = new Parser<?>[]{new ClassParser(),new MethodParser(),new VariableParser()};
+        Parser<?>[] parsers = new Parser<?>[]{new ClassParser(),new MethodParser(),new VariableParser(),new PrintParser()};
 
         Class main = null;
 
@@ -48,17 +47,23 @@ public class Runtime {
             Tokenizer tokenizer = new Tokenizer(line);
             for(Parser<?> parser : parsers){
                 if(parser.shouldParse(line)){
-                    System.out.println(parser.getClass().toString());
                     Block newBlock = parser.parse(block,tokenizer);
                     if(newBlock instanceof Class){
                         classes.add((Class) newBlock);
-                        System.out.println(((Class) newBlock).getName());
+                        block = newBlock;
                     }
                     else if(newBlock instanceof Method){
-                        block.addBlock(newBlock);
+                        //for any method, the block if added to the class(first block of a block tree.)
+                        block.getBlockTree().get(0).addBlock(newBlock);
+                        block = newBlock;
                     }
                     else if(newBlock instanceof VariableBlock) block.addBlock(newBlock);
-                    block = newBlock;
+                    else if(newBlock instanceof PrintBlock){
+                        //for print block, add to the method phase of a block tree.
+                        block.addBlock(newBlock);
+                    }
+
+
                     success=true;
                     break;
 

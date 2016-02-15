@@ -3,6 +3,8 @@ package org.practice.lang.block;
 import org.practice.lang.Variable;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 /**
  * Created by Anurag on 14-02-2016.
@@ -45,18 +47,31 @@ public abstract class Block {
      */
     public Variable getVariable(String name){
 
+        //TODO : also add type filter for variables or variable of different types could attach to each other.
         for(Variable variable : variables){
             if (variable.getName().equals(name)){
                 return variable;
             }
         }
+        //checking for the variable in superBlocks. recursively.
+        try{return superBlock.getVariable(name);}catch (NullPointerException n){throw new IllegalStateException("No variable initialised of name "+name);}
 
-       //checking for the variable in superBlocks. recursively.
-        if(superBlock.getVariable(name)!=null){
-            return superBlock.getVariable(name);
-        }else
+    }
 
-        return null;
+    /**
+     *
+     * @return BlockTree of any Block.
+     */
+    public ArrayList<Block> getBlockTree(){
+        ArrayList<Block> blocks = new ArrayList<>();
+        Block block = this;
+        do{
+            blocks.add(block);
+            block = block.getSuperBlock();
+
+        }while(block!=null);
+        Collections.reverse(blocks);
+            return (blocks);
     }
 
     //an abstract method for compulsory inclusion in all the inherited blocks.

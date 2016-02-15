@@ -2,9 +2,9 @@ package org.practice.lang.parser;
 
 import org.practice.lang.BuiltInType;
 import org.practice.lang.Type;
-import org.practice.lang.block.Block;
+import org.practice.lang.block.*;
 import org.practice.lang.Variable;
-import org.practice.lang.block.VariableBlock;
+import org.practice.lang.block.Class;
 import org.practice.lang.tokenizer.Token;
 import org.practice.lang.tokenizer.TokenType;
 import org.practice.lang.tokenizer.Tokenizer;
@@ -18,11 +18,13 @@ public class VariableParser extends Parser<VariableBlock> {
 
     @Override
     public boolean shouldParse(String line) {
-        return line.matches("var [a-zA-Z]+ [a-zA-Z]+ = (\")?[a-zA-Z0-9\\!\\,]*(\")?");
+        return line.matches("var [a-zA-Z]+ [a-zA-Z]+ = (\")?[a-zA-Z0-9\\!\\,\\.]*(\")?");
     }
 
     @Override
     public VariableBlock parse(Block superBlock, Tokenizer tokenizer) {
+
+        if(superBlock.getClass() == org.practice.lang.block.Class.class){System.out.println("var of class "+((Class)superBlock).getName());}
 
         tokenizer.nextToken();//skip the var keyword.
 
