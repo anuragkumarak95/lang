@@ -31,9 +31,10 @@ public class Runtime {
 
                 "       var String str = \"hello!\"\n"+
 
+                        "           array(5) = new integer(1 2 3 4 5)\n" +
+
                         "       method main requires () returns void\n" +
                         "           var String q = str\n" +
-                        "           array(5) = new integer(1 2 3 4 5)\n" +
                         "           print \"hello\"\n" +
 
                         "        method temp requires () returns integer\n" +

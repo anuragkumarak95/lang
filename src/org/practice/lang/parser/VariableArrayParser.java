@@ -17,6 +17,7 @@ public class VariableArrayParser extends Parser<VariableArrayBlock> {
         * Homogeneous Value Array Declaration:
         * <identifier = name>([<value = array_count>]) = new <Type> ([<value>...])
         * TODO : escape [ ] in regular expressions
+        * TODO : tokenizer not working properly for a set of STRING_LITERALS, fix it.
         */
         return line.matches("[a-zA-Z][a-zA-Z0-9]*\\s*\\([a-zA-Z0-9]+\\)\\s*=\\s*new\\s+[a-zA-Z]+\\s*\\(((\")?[a-zA-Z0-9]*(\")?\\s*)*\\)");
     }
@@ -39,6 +40,8 @@ public class VariableArrayParser extends Parser<VariableArrayBlock> {
         Object values[] = new Object[vCount];
         int counter = 0;
         if (!first.getToken().equals(")")) {
+            values[counter] = first.getToken();
+            counter++;
             while (tokenizer.hasNextToken()) {
                 Token token = tokenizer.nextToken();
                 if (token.getToken().equals(")")) break;//break out if ) occurs

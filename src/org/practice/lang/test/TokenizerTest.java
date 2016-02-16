@@ -14,7 +14,7 @@ public class TokenizerTest {
         String code =
                 "class HelloWorld\n" +
                         "    method main requires () return void\n" +
-                        "array [5] = new integer(1 2 3 4 5)\n" +
+                        "array [5] = new integer(\"hi\" , \"hi\", \"hi\", 4, 5)\n" +
                         "        print \"Hello\"";
 
         Tokenizer tokenizer = new Tokenizer(code);

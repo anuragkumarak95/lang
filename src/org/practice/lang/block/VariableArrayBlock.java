@@ -29,9 +29,11 @@ public class VariableArrayBlock extends Block {
 
         if (t == BuiltInType.VOID) throw new IllegalStateException(TAG + "variable cannot have builtInType : void");
 
-        if (getSuperBlock().getClass() == Class.class) System.out.println(TAG + "Globar variable : " + name);
+        if (getSuperBlock().getClass() == Class.class) System.out.println(TAG + "Globar variable array : " + name);
 
-        System.out.println(TAG + "var name : " + name + ", var type : " + t + ", value : " + values);
+        System.out.print(TAG + "var name : " + name + ", var type : " + t + ", values : [");
+        for (Object v : values) System.out.print(" " + v + " ");
+        System.out.print("] \n");
 
         //error handle for uniqueness of any variable.
         for (Variable v : getSuperBlock().getVariables()) {
