@@ -12,6 +12,7 @@ public class Value {
     public Value(Type type, Object value) {
         this.type = type;
         this.value = value;
+
     }
 
     //getters n setters..

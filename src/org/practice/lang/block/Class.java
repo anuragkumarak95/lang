@@ -1,5 +1,6 @@
 package org.practice.lang.block;
 
+import org.practice.lang.Parameter;
 import org.practice.lang.Type;
 
 /**
@@ -28,7 +29,35 @@ public class Class extends Block implements Type{
         }
     }
 
+    @Override
+    public void addBlock(Block block) {
+        //override the add block as to check the uniqueness of every method block under a class.
+        //TODO : i.e., a method name and parameters combination has to be unique. -->(not working in the case of args less equivalent functions.)<--
+        if (block.getClass() == Method.class) {
+            for (Block b : getSubBlocks()) {
+                if (b instanceof Method) {
+                    if (((Method) b).getName().equals(((Method) block).getName())) {
 
+                        for (Parameter p : ((Method) b).getParams()) {
+                            for (Parameter pNew : ((Method) block).getParams()) {
+                                if (!p.getType().toString().equals(pNew.getType().toString())) break;
+                            }
+                            throw new IllegalStateException("Another method of same name is initialised. : " +
+                                    ((Method) b).getName() + " returns " + ((Method) b).getType());
+                        }
+                    }
+
+                }
+            }
+        }
+
+        super.addBlock(block);
+
+    }
+
+    /**
+     * Method used to run the main method of the input source block of this specific class instance.
+     */
     public void run() {
         for(Block b : getSubBlocks()){
             if(b instanceof Method){
@@ -41,4 +70,5 @@ public class Class extends Block implements Type{
     public String getName() {
         return name;
     }
+
 }

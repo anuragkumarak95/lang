@@ -31,6 +31,11 @@ public class Method extends Block {
     public void init() {
 
         System.out.println(TAG + "Name : " + name + " | type " + type + " | parent :" + ((Class) getSuperBlock()).getName());
+        //error handling for methods at initialisation.
+        Type.match(type);
+
+
+
     }
 
 
@@ -39,6 +44,7 @@ public class Method extends Block {
         returnValue = invoke();
         if(returnValue!=null)
         System.out.println(TAG+"return value is "+returnValue.getValue()+"("+returnValue.getType()+")");
+
 
     }
 

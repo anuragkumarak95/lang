@@ -25,14 +25,21 @@ public class Runtime {
     //constructor: debugger constructor.
     public Runtime(){
         this.classes = new ArrayList<>();
+        //testing lang code.
         String code =
                 "   class HelloWorld\n" +
+
                 "       var String str = \"hello!\"\n"+
-                "       method main requires () returns void\n" +
-                        "   var String q = str\n"+
-                "           print \"hello\"\n"+
-                "        method temp requires () returns String\n"+
-                "           return \"hello\"\n";
+
+                        "       method main requires () returns void\n" +
+                        "           var String q = str\n" +
+                        "           print \"hello\"\n" +
+
+                        "        method temp requires () returns integer\n" +
+                        "           return 23\n" +
+
+                        "        method temp requires () returns integer\n" +
+                        "           return 23\n";
 
 
         boolean success = false;

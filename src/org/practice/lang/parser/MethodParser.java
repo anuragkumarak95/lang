@@ -1,6 +1,5 @@
 package org.practice.lang.parser;
 
-import org.practice.lang.BuiltInType;
 import org.practice.lang.Parameter;
 import org.practice.lang.Type;
 import org.practice.lang.block.Block;
@@ -53,7 +52,7 @@ public class MethodParser extends Parser<Method> {
 
                 else {
                     paramData[1] = token.getToken();
-                    params.add(new Parameter(BuiltInType.valueOf(paramData[0].toUpperCase()),paramData[1])); // in case of value added, add the gathered couple to the array list of parameters.
+                    params.add(new Parameter(Type.match(paramData[0].toUpperCase()), paramData[1])); // in case of value added, add the gathered couple to the array list of parameters.
                     paramData = new String[2];//reset the couple data back to null, for further gathering of parameters.
                 }
             }
