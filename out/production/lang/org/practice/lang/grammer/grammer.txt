@@ -3,8 +3,8 @@
 <identifier>:
 First character is a letter, any proceeding characters are letters or numbers.
 
-<builtInType>:
-A primitive builtInType: string, int, boolean, etc.
+<Type>:
+A primitive or User defined(Class) Type: string, int, boolean, etc.
 
 <value>:
 Either an identifier (for a variable) or a literal (1, "Hello", true)
@@ -16,7 +16,7 @@ Method Declaration:
 'method <identifier = name> requires ([<builtInType> <identifier = name>...]) returns <builtInType>'
 
 Variable Declaration:
-'var <builtInType> <identifier = name> [= <value>]'
+'var <Type> <identifier = name> [= <value>]'
 
 Method Invocation:
 '<identifier = name>([<value>...])'
@@ -26,3 +26,7 @@ Print Statement:
 
 Return Statement:
 'return <value>'
+
+Homogeneous Value Array Declaration:
+<identifier = name> ([<value = array_count>]) = new <Type> ([<value>...])
+--> array (5) = new int (1,2,3,4,5)

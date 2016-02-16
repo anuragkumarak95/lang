@@ -16,8 +16,6 @@ import java.util.ArrayList;
  */
 public class MethodParser extends Parser<Method> {
 
-
-
     @Override
     public boolean shouldParse(String line) {
         return line.matches(
@@ -51,14 +49,14 @@ public class MethodParser extends Parser<Method> {
                 }
 
                 else {
-                    paramData[1] = token.getToken();
+                    paramData[1] = token.getToken(); // add object
                     params.add(new Parameter(Type.match(paramData[0].toUpperCase()), paramData[1])); // in case of value added, add the gathered couple to the array list of parameters.
                     paramData = new String[2];//reset the couple data back to null, for further gathering of parameters.
                 }
             }
         }
 
-        tokenizer.nextToken();//skiped the returns keyword.
+        tokenizer.nextToken();//skip the returns keyword.
 
         String returnType = tokenizer.nextToken().getToken(); // gathered the returnBuiltInType from the token.
 

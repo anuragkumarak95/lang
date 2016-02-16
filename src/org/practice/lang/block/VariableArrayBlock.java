@@ -6,22 +6,19 @@ import org.practice.lang.Variable;
 import org.practice.lang.VariableArray;
 
 /**
- * Created by Anurag on 14-02-2016.
- *
- * Represents a Variable Block.
+ * Created by Anurag on 16-02-2016.
  */
-public class VariableBlock extends Block {
+public class VariableArrayBlock extends Block {
+    private final String TAG = "VariableArrayBlock/ : ";
 
-    private final String TAG = "VariableBlock/ : ";
+    private String type, name;
+    private Object[] values;
 
-    private String type,name;
-    private Object value;
-
-    public VariableBlock(Block superBlock,String type,String name,Object value) {
+    public VariableArrayBlock(Block superBlock, String type, String name, Object[] values) {
         super(superBlock);
         this.name = name;
         this.type = type;
-        this.value = value;
+        this.values = values;
 
         init();
     }
@@ -30,14 +27,14 @@ public class VariableBlock extends Block {
     public void init() {
         Type t = Type.match(type);
 
-        if(t == BuiltInType.VOID) throw new IllegalStateException(TAG+"variable cannot have builtInType : void");
+        if (t == BuiltInType.VOID) throw new IllegalStateException(TAG + "variable cannot have builtInType : void");
 
-        if(getSuperBlock().getClass() == Class.class) System.out.println(TAG+"Globar variable : " + name);
+        if (getSuperBlock().getClass() == Class.class) System.out.println(TAG + "Globar variable : " + name);
 
-        System.out.println(TAG + "var name : " + name + ", var type : " + t + ", value : " + value);
+        System.out.println(TAG + "var name : " + name + ", var type : " + t + ", value : " + values);
 
         //error handle for uniqueness of any variable.
-        for(Variable v : getSuperBlock().getVariables()){
+        for (Variable v : getSuperBlock().getVariables()) {
             if (v.getName().equals(name))
                 throw new IllegalStateException("variable with same name exit in the scope. (" + name + ")");
         }
@@ -47,8 +44,10 @@ public class VariableBlock extends Block {
                 throw new IllegalStateException("variable array with same name exit in the scope. (" + name + ")");
         }
 
+
         //add the variable to superBlock as the Variable block is of no use other than Composite class declaration.
-        getSuperBlock().addVariable(new Variable(getSuperBlock(), t, name, value));
+        getSuperBlock().addVariableArray(new VariableArray(getSuperBlock(), t, name, values));
     }
+
 
 }

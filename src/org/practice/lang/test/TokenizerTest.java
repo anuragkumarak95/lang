@@ -1,6 +1,5 @@
 package org.practice.lang.test;
 
-import org.practice.lang.parser.ClassParser;
 import org.practice.lang.tokenizer.Token;
 import org.practice.lang.tokenizer.Tokenizer;
 
@@ -15,6 +14,7 @@ public class TokenizerTest {
         String code =
                 "class HelloWorld\n" +
                         "    method main requires () return void\n" +
+                        "array [5] = new integer(1 2 3 4 5)\n" +
                         "        print \"Hello\"";
 
         Tokenizer tokenizer = new Tokenizer(code);

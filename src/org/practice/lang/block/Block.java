@@ -1,9 +1,9 @@
 package org.practice.lang.block;
 
 import org.practice.lang.Variable;
+import org.practice.lang.VariableArray;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 
 /**
@@ -17,11 +17,13 @@ public abstract class Block {
     //contains list of sibling blocks.
     private ArrayList<Block> subBlocks;
     private ArrayList<Variable> variables;
+    private ArrayList<VariableArray> variableArrays;
 
     public Block(Block superBlock) {
         this.superBlock = superBlock;
         this.subBlocks = new ArrayList<>();
         this.variables = new ArrayList<>();
+        this.variableArrays = new ArrayList<>();
     }
 
     public Block getSuperBlock() {
@@ -37,10 +39,6 @@ public abstract class Block {
     }
 
     public void addVariable(Variable variable){
-
-        //check for uniqueness of the variable identifier.
-        for(Variable v : variables){if(v.getName().equals(variable.getName())) throw new IllegalStateException("Variable of same name already present.");}
-
         variables.add(variable);
     }
 
@@ -59,6 +57,22 @@ public abstract class Block {
         }
         //checking for the variable in superBlocks. recursively.
         try{return superBlock.getVariable(name);}catch (NullPointerException n){throw new IllegalStateException("No variable initialised of name "+name);}
+
+    }
+
+    public VariableArray getVariableArray(String name) {
+        //TODO : also add type filter for variables or variable of different types could attach to each other.
+        for (VariableArray variableArray : variableArrays) {
+            if (variableArray.getName().equals(name)) {
+                return variableArray;
+            }
+        }
+        //checking for the variable arrays in superBlocks. recursively.
+        try {
+            return superBlock.getVariableArray(name);
+        } catch (NullPointerException n) {
+            throw new IllegalStateException("No variable array initialised of name " + name);
+        }
 
     }
 
@@ -83,6 +97,13 @@ public abstract class Block {
         return variables;
     }
 
+    public ArrayList<VariableArray> getVariableArrays() {
+        return variableArrays;
+    }
+
+    public void addVariableArray(VariableArray variableArray) {
+        variableArrays.add(variableArray);
+    }
 
     //an abstract initialisation method.
     public abstract void init();

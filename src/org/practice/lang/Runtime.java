@@ -33,6 +33,7 @@ public class Runtime {
 
                         "       method main requires () returns void\n" +
                         "           var String q = str\n" +
+                        "           array(5) = new integer(1 2 3 4 5)\n" +
                         "           print \"hello\"\n" +
 
                         "        method temp requires () returns integer\n" +
@@ -44,7 +45,15 @@ public class Runtime {
 
         boolean success = false;
 
-        Parser<?>[] parsers = new Parser<?>[]{new ClassParser(),new MethodParser(),new VariableParser(),new PrintParser(),new ReturnParser()};
+        Parser<?>[] parsers = new Parser<?>[]{
+                //Parser's list.
+                new ClassParser(),
+                new MethodParser(),
+                new VariableParser(),
+                new PrintParser(),
+                new ReturnParser(),
+                new VariableArrayParser()
+        };
 
         Class main = null;
 
@@ -75,12 +84,12 @@ public class Runtime {
                         block = newBlock;
                     }
                     else if(newBlock instanceof VariableBlock) block.addBlock(newBlock);
+                    else if (newBlock instanceof VariableArrayBlock) block.addBlock(newBlock);
                     else if(newBlock instanceof ReturnBlock) block.addBlock(newBlock);
                     else if(newBlock instanceof PrintBlock){
                         //for print block, add to the method phase of a block tree.
                         block.addBlock(newBlock);
                     }
-
 
                     success=true;
                     break;
@@ -89,7 +98,7 @@ public class Runtime {
             }
 
 
-            if(!success) throw new IllegalStateException("Parser Procedure not complete."+line);
+            if (!success) throw new IllegalStateException("Parser Procedure not complete: \"" + line + "\"");
         }
 
 
