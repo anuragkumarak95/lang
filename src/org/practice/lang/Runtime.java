@@ -20,16 +20,19 @@ public class Runtime {
     }
 
     private ArrayList<Class> classes;
+
+
+    //constructor: debugger constructor.
     public Runtime(){
         this.classes = new ArrayList<>();
         String code =
-                "   class HelloWld\n" +
+                "   class HelloWorld\n" +
                 "       var String str = \"hello!\"\n"+
                 "       method main requires () returns void\n" +
                         "   var String q = str\n"+
                 "           print \"hello\"\n"+
-                            "return \"hello\"\n"+
-                "        method temp requires () returns void\n";
+                "        method temp requires () returns String\n"+
+                "           return \"hello\"\n";
 
 
         boolean success = false;
@@ -65,7 +68,7 @@ public class Runtime {
                         block = newBlock;
                     }
                     else if(newBlock instanceof VariableBlock) block.addBlock(newBlock);
-                    else if(newBlock instanceof ReturnBlock){ System.out.println("Yup"); block.addBlock(newBlock);}
+                    else if(newBlock instanceof ReturnBlock) block.addBlock(newBlock);
                     else if(newBlock instanceof PrintBlock){
                         //for print block, add to the method phase of a block tree.
                         block.addBlock(newBlock);

@@ -19,12 +19,11 @@ public class ReturnBlock extends Block {
 
     @Override
     public void init() {
-        System.out.println(TAG + "return block initialed for method : " + ((Method) getSuperBlock()).getName());
+        System.out.println(TAG + "return block initialized for method : " + ((Method) getSuperBlock()).getName());
         if(getSuperBlock().getClass() != Method.class) throw new IllegalStateException(TAG+"No method found for the return statement.");
 
-        if(((Method)getSuperBlock()).getType().toUpperCase() == BuiltInType.VOID.toString().toUpperCase())
+        if(((Method)getSuperBlock()).getType().equals(BuiltInType.VOID.toString().toLowerCase()))
             throw new IllegalStateException("container method doesn't require a return statement.");
-
     }
 
     public Value returnValue(){

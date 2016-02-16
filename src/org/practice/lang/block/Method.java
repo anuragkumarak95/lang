@@ -36,7 +36,9 @@ public class Method extends Block {
 
     public void run() {
         //to start the method functionality, invoke the method.
-        invoke();
+        returnValue = invoke();
+        if(returnValue!=null)
+        System.out.println(TAG+"return value is "+returnValue.getValue()+"("+returnValue.getType()+")");
 
     }
 
@@ -67,13 +69,11 @@ public class Method extends Block {
             Add a return block in here and init() the return block to gather the returnValue from it. *done*
             */
             if(b instanceof ReturnBlock){
-                System.out.println(TAG+"return statement found.");
-                returnValue = ((ReturnBlock) b).returnValue();
+                this.returnValue = ((ReturnBlock) b).returnValue();
             }
             if(returnValue != null){
                 break;
             }
-
         }
 
         if(returnValue == null && t != BuiltInType.VOID) throw new IllegalStateException(TAG+"No return value generated. Excepts "+ type);
