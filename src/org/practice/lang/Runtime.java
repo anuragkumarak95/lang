@@ -23,17 +23,18 @@ public class Runtime {
     public Runtime(){
         this.classes = new ArrayList<>();
         String code =
-                "   class HelloWorld\n" +
+                "   class HelloWld\n" +
                 "       var String str = \"hello!\"\n"+
                 "       method main requires () returns void\n" +
                         "   var String q = str\n"+
                 "           print \"hello\"\n"+
+                            "return \"hello\"\n"+
                 "        method temp requires () returns void\n";
 
 
         boolean success = false;
 
-        Parser<?>[] parsers = new Parser<?>[]{new ClassParser(),new MethodParser(),new VariableParser(),new PrintParser()};
+        Parser<?>[] parsers = new Parser<?>[]{new ClassParser(),new MethodParser(),new VariableParser(),new PrintParser(),new ReturnParser()};
 
         Class main = null;
 
@@ -64,6 +65,7 @@ public class Runtime {
                         block = newBlock;
                     }
                     else if(newBlock instanceof VariableBlock) block.addBlock(newBlock);
+                    else if(newBlock instanceof ReturnBlock){ System.out.println("Yup"); block.addBlock(newBlock);}
                     else if(newBlock instanceof PrintBlock){
                         //for print block, add to the method phase of a block tree.
                         block.addBlock(newBlock);

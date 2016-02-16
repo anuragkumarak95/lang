@@ -30,18 +30,19 @@ public class Method extends Block {
     @Override
     public void init() {
 
-        System.out.println(TAG+"Name : "+name+" | type "+type+" | parent :"+((Class)getSuperBlock()).getName());
+        System.out.println(TAG + "Name : " + name + " | type " + type + " | parent :" + ((Class) getSuperBlock()).getName());
     }
 
 
     public void run() {
-        System.out.println(TAG+name+" method called..");
         //to start the method functionality, invoke the method.
         invoke();
 
     }
 
     public Value invoke(Value... values){
+
+        System.out.println(TAG+name+" method called..");
         Type t = Type.match(type);
 
         //Invoke the method with the supplied values.
@@ -63,9 +64,12 @@ public class Method extends Block {
         for(Block b : getSubBlocks()){
 
             /*
-            Add a return block in here and init() the return block to gather the returnValue from it.
-            b.init();*/
-
+            Add a return block in here and init() the return block to gather the returnValue from it. *done*
+            */
+            if(b instanceof ReturnBlock){
+                System.out.println(TAG+"return statement found.");
+                returnValue = ((ReturnBlock) b).returnValue();
+            }
             if(returnValue != null){
                 break;
             }
