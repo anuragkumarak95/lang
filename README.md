@@ -9,18 +9,16 @@ and now some new self-implementations are on the way.
 
 Token generators are complete.
 
-***
-Some feature Blocks developed with respective Parsers.
+**Some feature Blocks developed with respective Parsers.**
 
-***
-A debugging runtime is added.
+**A debugging runtime is added.**
 
 ***
 A variable array implementation added.(An individual Value set for array values, i.e., creating a array variable from scratch.) 
 where a value comprises of array of OBJECTS and a TYPE for those object.
 
 ***
-<b>Acknowledgement goes to - <a href="https://www.youtube.com/channel/UCI5kTq_eoaZslY9TQ4XlmmA">@Youtube/Pogo - Coding and More</a>.
-</b>
+**Acknowledgement goes to - [@Youtube/Pogo - Coding and More](https://www.youtube.com/channel/UCI5kTq_eoaZslY9TQ4XlmmA)**
+
 ##About Developer
 I'm a engineering student in India.
