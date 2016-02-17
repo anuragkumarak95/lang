@@ -3,6 +3,7 @@ package org.practice.lang.parser;
 import org.practice.lang.block.Block;
 import org.practice.lang.block.VariableArrayBlock;
 import org.practice.lang.tokenizer.Token;
+import org.practice.lang.tokenizer.TokenType;
 import org.practice.lang.tokenizer.Tokenizer;
 
 /**
@@ -40,12 +41,23 @@ public class VariableArrayParser extends Parser<VariableArrayBlock> {
         Object values[] = new Object[vCount];
         int counter = 0;
         if (!first.getToken().equals(")")) {
+            if (!first.getType().toString().toUpperCase().contains(type.toUpperCase()))
+                throw new IllegalStateException(first.getToken() + " is not a " + type.toUpperCase());
             values[counter] = first.getToken();
             counter++;
             while (tokenizer.hasNextToken()) {
                 Token token = tokenizer.nextToken();
                 if (token.getToken().equals(")")) break;//break out if ) occurs
 
+                //TODO : implement variable or variable array assignment to the variable array. *done*
+                if (token.getType() == TokenType.IDENTIFIER) {
+                    values[counter] = superBlock.getVariable(token.getToken()).getValue();
+                    counter++;
+                    continue;
+                }
+
+                if (!token.getType().toString().toUpperCase().contains(type.toUpperCase()))
+                    throw new IllegalStateException(token.getToken() + " is not a " + type.toUpperCase());
                 values[counter] = token.getToken();
                 counter++;
             }

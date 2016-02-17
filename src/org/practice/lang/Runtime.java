@@ -30,8 +30,8 @@ public class Runtime {
                 "   class HelloWorld\n" +
 
                 "       var String str = \"hello!\"\n"+
-
-                        "           array(5) = new integer(1 2 3 4 5)\n" +
+                        "       var integer num = 5 \n" +
+                        "       intArray(5) = new integer(1 num 3 \"hi\" 5)\n" +
 
                         "       method main requires () returns void\n" +
                         "           var String q = str\n" +
@@ -60,12 +60,13 @@ public class Runtime {
 
         Block block = null;
 
+        //parsing each line individually. acting like an interpreter.
         for(String line : code.split("\n")){
             line = line.trim(); // reducing empty spaces.
             success = false;
             Tokenizer tokenizer = new Tokenizer(line);
             for(Parser<?> parser : parsers){
-
+                //checking for the specific parser for the mentioned source code line.
                 if(parser.shouldParse(line)){
 
                     //if the parsing is for method block, then the super block has to be the initial class block of the current block.
@@ -74,7 +75,7 @@ public class Runtime {
                     //actual parsing of blocks.
                     Block newBlock = parser.parse(block,tokenizer);
 
-                    //creating block hierarchy of blocks according to aquired sequence of lines.
+                    //creating block hierarchy of blocks according to acquired sequence of lines.
                     if(newBlock instanceof Class){
                         classes.add((Class) newBlock);
                         block = newBlock;
@@ -92,14 +93,15 @@ public class Runtime {
                         block.addBlock(newBlock);
                     }
 
+                    //if the block is parses properly, success will finally be true.
                     success=true;
                     break;
 
                 }
             }
 
-
-            if (!success) throw new IllegalStateException("Parser Procedure not complete: \"" + line + "\"");
+            //if the success bool is still false, then it means all parsers have gone threw the line but none could parse it. failed to parse scenario.
+            if (!success) throw new IllegalStateException("Could not parse : \"" + line + "\"");
         }
 
 

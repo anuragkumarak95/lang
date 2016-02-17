@@ -19,7 +19,7 @@ public class MethodParser extends Parser<Method> {
     @Override
     public boolean shouldParse(String line) {
         return line.matches(
-                "method [a-zA-z][a-zA-Z0-9]* requires \\(([a-zA-z][a-zA-Z0-9]* [a-zA-z][a-zA-Z0-9]*)*\\) returns [a-zA-z][a-zA-Z0-9]*"
+                "method [a-zA-Z][a-zA-Z0-9]* requires \\(([a-zA-z][a-zA-Z0-9]* [a-zA-z][a-zA-Z0-9]*)*\\) returns [a-zA-z][a-zA-Z0-9]*"
         );
     }
 

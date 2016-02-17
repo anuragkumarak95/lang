@@ -32,7 +32,9 @@ public class VariableBlock extends Block {
 
         if(t == BuiltInType.VOID) throw new IllegalStateException(TAG+"variable cannot have builtInType : void");
 
-        if(getSuperBlock().getClass() == Class.class) System.out.println(TAG+"Globar variable : " + name);
+        if (getSuperBlock().getClass() == Class.class) System.out.println(TAG + "Global variable : " + name);
+
+        if (getSuperBlock().getClass() == Method.class) System.out.println(TAG + "Local variable : " + name);
 
         System.out.println(TAG + "var name : " + name + ", var type : " + t + ", value : " + value);
 

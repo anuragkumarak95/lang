@@ -25,9 +25,12 @@ public class Tokenizer {
         this.tokenDatas = new ArrayList<>();
         tokenDatas.add(new TokenData(Pattern.compile("^([a-zA-z][a-zA-z0-9]*)"), TokenType.IDENTIFIER));
         tokenDatas.add(new TokenData(Pattern.compile("^((-)?[0-9]+)"), TokenType.INTEGER_LITERAL));
+        //TODO : tokenizer is having problem in token an array if STRING_LITERALS, fix it.
         tokenDatas.add(new TokenData(Pattern.compile("^(\".*\")"), TokenType.STRING_LITERAL));
-        for (String t : new String[]{"=", "\\(", "\\)", "\\.", ","}) {
-            tokenDatas.add(new TokenData(Pattern.compile("^(" + t + ")"), TokenType.TOKEN));
+
+        //TODO : find a fix for escaping Square Braces. [ ]
+        for (String t : new String[]{"=", "(", ")", ".", ",", "["}) {
+            tokenDatas.add(new TokenData(Pattern.compile("^(\\Q" + t + "\\E)"), TokenType.TOKEN));
         }
     }
 

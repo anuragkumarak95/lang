@@ -1,7 +1,7 @@
 package org.practice.lang.parser;
 
 import org.practice.lang.Type;
-import org.practice.lang.block.*;
+import org.practice.lang.block.Block;
 import org.practice.lang.block.Class;
 import org.practice.lang.tokenizer.Tokenizer;
 
