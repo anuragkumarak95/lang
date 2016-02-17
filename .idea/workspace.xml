@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9c6d3ae0-c52b-4aa2-8d1b-7f17e684f66a" name="Default" comment="understood the string array tokenizer problems. commented">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/practice/lang/parser/ClassParser.java" afterPath="$PROJECT_DIR$/src/org/practice/lang/parser/ClassParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/practice/lang/parser/MethodParser.java" afterPath="$PROJECT_DIR$/src/org/practice/lang/parser/MethodParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/practice/lang/block/PrintBlock.java" afterPath="$PROJECT_DIR$/src/org/practice/lang/block/PrintBlock.java" />
+    <list default="true" id="9c6d3ae0-c52b-4aa2-8d1b-7f17e684f66a" name="Default" comment="Added some TODO for improvement reference and grammer check on README.md">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/lang/org/practice/lang/parser/MethodParser.class" afterPath="$PROJECT_DIR$/out/production/lang/org/practice/lang/parser/MethodParser.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/lang/org/practice/lang/block/PrintBlock.class" afterPath="$PROJECT_DIR$/out/production/lang/org/practice/lang/block/PrintBlock.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/lang/org/practice/lang/Runtime.class" afterPath="$PROJECT_DIR$/out/production/lang/org/practice/lang/Runtime.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/lang/org/practice/lang/tokenizer/Tokenizer.class" afterPath="$PROJECT_DIR$/out/production/lang/org/practice/lang/tokenizer/Tokenizer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/lang/org/practice/lang/test/TokenizerTest.class" afterPath="$PROJECT_DIR$/out/production/lang/org/practice/lang/test/TokenizerTest.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/lang/org/practice/lang/block/VariableBlock.class" afterPath="$PROJECT_DIR$/out/production/lang/org/practice/lang/block/VariableBlock.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/lang/org/practice/lang/parser/VariableParser.class" afterPath="$PROJECT_DIR$/out/production/lang/org/practice/lang/parser/VariableParser.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/practice/lang/Runtime.java" afterPath="$PROJECT_DIR$/src/org/practice/lang/Runtime.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/practice/lang/tokenizer/Tokenizer.java" afterPath="$PROJECT_DIR$/src/org/practice/lang/tokenizer/Tokenizer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/practice/lang/test/TokenizerTest.java" afterPath="$PROJECT_DIR$/src/org/practice/lang/test/TokenizerTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/practice/lang/parser/VariableArrayParser.java" afterPath="$PROJECT_DIR$/src/org/practice/lang/parser/VariableArrayParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/practice/lang/block/VariableBlock.java" afterPath="$PROJECT_DIR$/src/org/practice/lang/block/VariableBlock.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/org/practice/lang/parser/VariableParser.java" afterPath="$PROJECT_DIR$/src/org/practice/lang/parser/VariableParser.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="lang.iws" />
@@ -54,8 +52,8 @@
           </provider>
           <provider selected="true" editor-type-id="split-provider[text-editor;MultiMarkdownPreviewEditor]">
             <state split_layout="FIRST">
-              <first_editor vertical-scroll-proportion="0.123188406">
-                <caret line="4" column="15" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
+              <first_editor vertical-scroll-proportion="0.24637681">
+                <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -607,7 +605,7 @@
       <created>1455636747738</created>
       <option name="number" value="Default" />
       <updated>1455636747738</updated>
-      <workItem from="1455636753414" duration="21905000" />
+      <workItem from="1455636753414" duration="22431000" />
     </task>
     <task id="LOCAL-00001" summary="re-filed the project with idea.impl and improved return block and parsing.">
       <created>1455638217692</created>
@@ -633,11 +631,17 @@
       <option name="project" value="LOCAL" />
       <updated>1455651315627</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added some TODO for improvement reference and grammer check on README.md">
+      <created>1455693460976</created>
+      <option name="number" value="00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1455693460976</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21905000" />
+    <option name="totallyTimeSpent" value="22431000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -677,7 +681,8 @@
     <MESSAGE value="some exception handling for blocks.(incomplete)" />
     <MESSAGE value="Added variable array declaration and updated grammar.(working)" />
     <MESSAGE value="understood the string array tokenizer problems. commented" />
-    <option name="LAST_COMMIT_MESSAGE" value="understood the string array tokenizer problems. commented" />
+    <MESSAGE value="Added some TODO for improvement reference and grammer check on README.md" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added some TODO for improvement reference and grammer check on README.md" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -893,8 +898,8 @@
       </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;MultiMarkdownPreviewEditor]">
         <state split_layout="FIRST">
-          <first_editor vertical-scroll-proportion="0.123188406">
-            <caret line="4" column="15" selection-start-line="4" selection-start-column="15" selection-end-line="4" selection-end-column="15" />
+          <first_editor vertical-scroll-proportion="0.24637681">
+            <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
             <folding />
           </first_editor>
           <second_editor />
